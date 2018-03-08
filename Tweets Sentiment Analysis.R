@@ -44,13 +44,9 @@ negcorpus<- removeSparseTerms(negcorpus, 0.95) # remove 5% of the sprasities in 
 d<- dist(t(as.matrix(negcorpus)), method = "euclidean")
 d
 
-# compare two Hierarchical approaches ("complete" and "ward")
-hc1<- hclust(d)
-plot(hc1, hang = -1, main = "Negative Tweets", xlab = "")
-rect.hclust(hc1, k=6, border = "red")
-
-hc2<- hclust(d, method = "ward.D")
-plot(hc2, hang = -1, main = "Negative Tweets", xlab = "")
-rect.hclust(hc2, k=6, border = "red")
+# use Ward's method
+hc<- hclust(d, method = "ward.D")
+plot(hc, hang = -1, main = "Negative Tweets", xlab = "")
+rect.hclust(hc, k=6, border = "red")
 
 
